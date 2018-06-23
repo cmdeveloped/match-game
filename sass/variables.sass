@@ -1,0 +1,43 @@
+// color palette
+$color1: #ff9966
+$color2: #ff5e62
+
+$dark: #dfdfdf
+$light: #f1f1f1
+
+// media queries made easy
+$small: 'only screen and (max-width: 576px)'
+$medium: 'only screen and (max-width: 768px)'
+$large: 'only screen and (max-width: 1024px)'
+$xlarge: 'only screen and (max-width: 1250px)'
+$xxlarge: 'only screen and (max-width: 1440px)'
+$hd: 'only screen and (max-width: 1920px)'
+
+// fonts
+$font1: 'Roboto', sans-serif
+$font2: 'Arial', sans-serif
+
+// variables you should use
+=bg($a, $b)
+  background-size: $a
+  background-position: $b
+  background-repeat: no-repeat
+
+=gradient($a, $b, $c)
+  background: $b
+  background: linear-gradient($a, $b, $c)
+
+=fb($a, $b)
+  display: flex
+  align-items: $a
+  justify-content: $b
+
+// default styling
+html
+  font-size: 1vw
+  min-height: 100vh
+  @media #{$hd}
+    font-size: 16px
+  body
+    +gradient(to bottom, $dark, $light)
+    font-family: $font1

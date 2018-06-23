@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <!-- favicons -->
+    <link rel="shortcut icon" href="./img/favicon.png" />
+    <link rel="apple-touch-icon" href="./img/favicon.png" />
+
+    <!-- styles -->
+    <!-- Google Fonts Link Here -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-oi8o31xSQq8S0RpBcb4FaLB8LJi9AT8oIdmS1QldR8Ui7KUQjNAnDlJjp55Ba8FG" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./minified/styles.min.css">
+
+    <!-- scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./minified/scripts.min.js"></script>
+    <title></title>
+  </head>
+  <body class="udacity-game">
+
+    <main class="body-container">
+
+      <!-- Remember to use HTML5 elements for best practice! ie - section, article, aside, nav, header, footer, etc -->
+      <section class="wrapper">
+        <!-- top game menu -->
+        <div class="menu">
+          <!-- game time -->
+          <aside class="timer">
+            <label for="timer">Time Elapsed - </label>
+            <span id="timer">0</span>
+          </aside>
+          <!-- reset button -->
+          <button type="button" name="refresh" id="refresh">
+            <i class="far fa-sync-alt"></i>
+          </button>
+        </div>
+        <!-- append playing cards here -->
+        <div class="cards"></div>
+      </section>
+
+    </main>
+
+  </body>
+</html>
