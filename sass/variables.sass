@@ -1,9 +1,9 @@
 // color palette
-$color1: #ff9966
-$color2: #ff5e62
+$color1: #ef4142
+$color2: #141a20
 
-$dark: #dfdfdf
-$light: #f1f1f1
+$dark: #efeff4
+$light: #fff
 
 // media queries made easy
 $small: 'only screen and (max-width: 576px)'
@@ -14,8 +14,8 @@ $xxlarge: 'only screen and (max-width: 1440px)'
 $hd: 'only screen and (max-width: 1920px)'
 
 // fonts
-$font1: 'Roboto', sans-serif
-$font2: 'Arial', sans-serif
+$font1: 'Open Sans Condensed', sans-serif
+$font2: 'Comfortaa', sans-serif
 
 // variables you should use
 =bg($a, $b)
@@ -39,5 +39,5 @@ html
   @media #{$hd}
     font-size: 16px
   body
-    +gradient(to bottom, $dark, $light)
+    background-color: $light
     font-family: $font1

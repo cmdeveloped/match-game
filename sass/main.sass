@@ -2,36 +2,57 @@
 
 .udacity-game
   +fb(center, center)
+  position: relative
   .wrapper
     width: 65rem
+    position: relative
+    .title
+      position: absolute
+      z-index: -1
+      right: -3rem
+      top: 50%
+      height: 0
+      width: 0
+      white-space: nowrap
+      +fb(center, center)
+      transform-origin: center
+      transform: rotate(90deg)
+      font-size: 5vw
+      font-weight: bold
+      text-transform: uppercase
+      color: $dark
     .menu
       +fb(center, space-between)
       padding: 2rem 1rem 0
+      .moves
+        font-size: 1.5rem
+        font-family: $font2
       // refresh button styling
       #refresh
         border: none
         background-color: transparent
-        color: $color2
+        color: $color1
         font-size: 1.5rem
         &:focus
           outline: none
     // card loading animation
     .cards.load
       .game-card
-        animation: load forwards
         &:nth-child(4n+1)
-          animation-duration: 0.25s
+          animation: load 0.25s forwards
         &:nth-child(4n+2)
-          animation-duration: 0.5s
+          animation: load 0.5s forwards
         &:nth-child(4n+3)
-          animation-duration: 1s
+          animation: load 1s forwards
         &:nth-child(4n+4)
-          animation-duration: 1.5s
+          animation: load 1.5s forwards
     // cards container
     .cards
       +fb(stretch, space-between)
       flex-wrap: wrap
       padding: 1rem
+      .game-card.matched
+        animation: match 1s forwards !important
       .game-card
         margin-top: 2vh
         height: 25vh
@@ -39,8 +60,16 @@
         .inner
           height: 100%
           position: relative
+          cursor: pointer
+          &:hover
+            .front
+              i
+                color: $color1
+          &:focus
+            .front
+              i
+                color: $dark
           .front, .back
-            +gradient(to bottom, $color1, $color2)
             +fb(center, center)
             border-radius: 10px
             position: absolute
@@ -48,13 +77,18 @@
             left: 0
             width: 100%
             height: 100%
+          .front
+            background-color: $dark
+            i
+              font-size: 4rem
+              color: $light
+              transition: 0.25s
+          .back
+            background-color: $color1
+            opacity: 0
             i
               font-size: 3.5rem
-              color: white
-          .front
-            opacity: 1
-          .back
-            opacity: 0
+              color: $light
       // card active
       .game-card.active
         .front
@@ -69,3 +103,14 @@
   100%
     opacity: 1
     transform: scale(1)
+
+@keyframes match
+  0%
+    opacity: 1
+    transform: scale(1)
+  25%
+    opacity: 1
+    transform: scale(1.01)
+  100%
+    opacity: 0
+    transform: scale(0.25)
