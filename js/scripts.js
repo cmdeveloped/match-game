@@ -5,7 +5,7 @@ $(document).ready(function() {
     // empty cards to reset
     $('.cards').empty();
     // create icons array and sort
-    let icons = ['fab fa-accessible-icon', 'far fa-car', 'far fa-bicycle', 'far fa-fighter-jet', 'far fa-rocket', 'far fa-ship', 'fab fa-accessible-icon', 'far fa-car', 'far fa-bicycle', 'far fa-fighter-jet', 'far fa-rocket', 'far fa-ship'];
+    let icons = ['fal fa-plane', 'fal fa-car', 'fal fa-bicycle', 'fal fa-fighter-jet', 'fal fa-rocket', 'fal fa-ship', 'fal fa-plane', 'fal fa-car', 'fal fa-bicycle', 'fal fa-fighter-jet', 'fal fa-rocket', 'fal fa-ship'];
     icons.sort(function() {
       return 0.5 - Math.random();
     });
@@ -16,7 +16,7 @@ $(document).ready(function() {
       <div class="game-card">
         <div class="inner">
           <div class="front">
-            <i class="far fa-question-circle"></i>
+            <i class="fal fa-question-circle"></i>
           </div>
           <div class="back">
             <i class="${icon}"></i>
@@ -45,7 +45,16 @@ $(document).ready(function() {
   });
 
   // click card and toggle active
+  let count = 0;
+  const clickedCards = [];
   $(document).on('click', '.game-card', function() {
+    let clickedCard = $(this).find('.back i').attr('class');
     $(this).addClass('active');
+    clickedCards.push(clickedCard);
+    count++;
+    if (count === 2) {
+      count = 0;
+    }
+    console.log(clickedCards);
   });
 });
