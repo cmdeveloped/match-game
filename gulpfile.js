@@ -10,14 +10,12 @@ var rename = require('gulp-rename');
 
 // default when you run gulp
 gulp.task('default', ['styles', 'scripts', 'lint'], function() {
-  console.log('What? SUPPORT is evolving!');
   gulp.watch('sass/**/*.sass', ['styles']);
   gulp.watch('js/**/*.js', ['scripts', 'lint']);
   gulp.watch('./index.html').on('change', browserSync.reload);
   browserSync.init({
     server: './',
     open: false,
-    logPrefix: 'JLB Support'
   });
 });
 
