@@ -86,7 +86,16 @@ $(document).ready(function() {
     count++;
     if (count % 2 === 0) {
       moves++;
+      // increment moves
       $('#moves, #totalMoves').text(moves);
+    }
+
+    // check for and hide stars
+    if (moves > 15) {
+      $('#stars .star:last-child').hide();
+    }
+    if (moves > 25) {
+      $('#stars .star:nth-child(2)').hide();
     }
   }
 
@@ -98,6 +107,7 @@ $(document).ready(function() {
     count = 0;
     moves = 0;
     $('#moves').text(moves);
+    $('.star').show();
   }
 
   // refresh all cards when button is clicked
@@ -133,6 +143,10 @@ $(document).ready(function() {
           $('.game-card.active').addClass('matched');
           $('html').removeClass('wait');
           if ($('.game-card.matched').length === $('.game-card').length) {
+            let finalRating = $('.star:visible').length;
+            for (let i = 0; i < finalRating; i++) {
+              $('#totalRating').append(`<i class="fas fa-star"></i>`);
+            }
             $('.congrats').addClass('active');
           }
         }, 1000);

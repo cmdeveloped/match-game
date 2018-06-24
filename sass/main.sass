@@ -14,7 +14,7 @@
       top: 0
       left: 0
       +fb(center, center)
-      background-color: $dark
+      background-color: $light
       color: $color2
       text-align: center
       font-family: $font2
@@ -45,7 +45,7 @@
           background-color: $color2
           color: $light
   .game
-    width: 65rem
+    width: 60rem
     position: relative
     .title
       position: absolute
@@ -64,15 +64,18 @@
       color: $dark
     .menu
       +fb(center, space-between)
-      padding: 2rem 1rem 0
+      padding: 2rem 0.5rem
       position: relative
-      .moves, .timer
+      color: $color2
+      .moves, .timer, .stars
         font-size: 1.5rem
         font-family: $font2
+        label
+          margin: 0
       .timer
         position: absolute
         left: 50%
-        top: 3rem
+        top: 50%
         transform: translate(-50%, -50%)
         font-size: 2.5rem
         font-family: $font2
@@ -80,7 +83,6 @@
       #refresh
         border: none
         background-color: transparent
-        color: $color1
         font-size: 1.5rem
         &:focus
           outline: none
@@ -99,13 +101,12 @@
     .cards
       +fb(stretch, space-between)
       flex-wrap: wrap
-      padding: 1rem
       .game-card.matched
-        animation: match 1s forwards !important
+        animation: match 0.25s linear forwards !important
       .game-card
-        margin-top: 2vh
-        height: 25vh
-        width: calc(25% - 1vh)
+        height: 12rem
+        width: 25%
+        padding: 0.5rem
         .inner
           height: 100%
           position: relative
@@ -113,7 +114,7 @@
           &:hover
             .front
               i
-                color: $color1
+                color: $color2
           &:focus
             .front
               i
@@ -135,11 +136,12 @@
           .back
             background-color: $color1
             opacity: 0
+            transform-origin: center
             i
               font-size: 3.5rem
               color: $light
       // card active
-      .game-card.active
+      .game-card.active, .game-card.matched
         .front
           opacity: 0
         .back
@@ -155,11 +157,12 @@
 
 @keyframes match
   0%
-    opacity: 1
-    transform: scale(1)
+    transform: rotate(0)
   25%
-    opacity: 1
-    transform: scale(1.01)
+    transform: rotate(15deg)
+  50%
+    transform: rotate(0)
+  75%
+    transform: rotate(-15deg)
   100%
-    opacity: 0
-    transform: scale(0.25)
+    transform: rotate(0)

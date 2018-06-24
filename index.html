@@ -28,6 +28,7 @@
         <div class="wrapper">
           <h2 class="heading">Congratulations!</h2>
           <p class="message">You were able to match all cards in <span id="totalMoves"></span> moves!</p>
+          <p id="totalRating"></p>
           <button type="button" name="playAgain" id="playAgain">Play Again</button>
         </div>
       </section>
@@ -45,12 +46,16 @@
             </div>
             <div class="stars">
               <label for="stars">Rating - </label>
-              <span id="stars"></span>
+              <span id="stars">
+                <span class="star"><i class="fas fa-star"></i></span>
+                <span class="star"><i class="fas fa-star"></i></span>
+                <span class="star"><i class="fas fa-star"></i></span>
+              </span>
             </div>
           </aside>
-          <aside class="timer">
+          <!-- <aside class="timer">
             <span id="timer">0:00</span>
-          </aside>
+          </aside> -->
           <!-- reset button -->
           <button type="button" name="refresh" id="refresh">
             <i class="far fa-sync-alt"></i>
