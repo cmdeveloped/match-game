@@ -10,7 +10,7 @@
 
     <!-- styles -->
     <!-- Google Fonts Link Here -->
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300|Open+Sans+Condensed:700" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-oi8o31xSQq8S0RpBcb4FaLB8LJi9AT8oIdmS1QldR8Ui7KUQjNAnDlJjp55Ba8FG" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./minified/styles.min.css">
@@ -24,16 +24,32 @@
   <body class="udacity-game">
 
     <main class="body-container">
+      <section class="congrats">
+        <div class="wrapper">
+          <h2 class="heading">Congratulations!</h2>
+          <p class="message">You were able to match all cards in <span id="totalMoves"></span> moves!</p>
+          <button type="button" name="playAgain" id="playAgain">Play Again</button>
+        </div>
+      </section>
 
       <!-- Remember to use HTML5 elements for best practice! ie - section, article, aside, nav, header, footer, etc -->
-      <section class="wrapper">
+      <section class="game">
         <h1 class="title">Udacity Match Game</h1>
         <!-- top game menu -->
         <div class="menu">
           <!-- game time -->
-          <aside class="moves">
-            <label for="moves">Moves - </label>
-            <span id="moves">0</span>
+          <aside class="counts">
+            <div class="moves">
+              <label for="moves">Moves - </label>
+              <span id="moves">0</span>
+            </div>
+            <div class="stars">
+              <label for="stars">Rating - </label>
+              <span id="stars"></span>
+            </div>
+          </aside>
+          <aside class="timer">
+            <span id="timer">0:00</span>
           </aside>
           <!-- reset button -->
           <button type="button" name="refresh" id="refresh">

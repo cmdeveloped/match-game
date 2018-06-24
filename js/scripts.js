@@ -29,6 +29,14 @@ $(document).ready(function() {
         slug: 'ship',
         class: 'fal fa-ship'
       },
+      {
+        slug: 'taxi',
+        class: 'fal fa-taxi'
+      },
+      {
+        slug: 'train',
+        class: 'fal fa-train'
+      }
     ];
     // create empty array for duplicating icons
     let pairs = [];
@@ -78,7 +86,7 @@ $(document).ready(function() {
     count++;
     if (count % 2 === 0) {
       moves++;
-      $('#moves').text(moves);
+      $('#moves, #totalMoves').text(moves);
     }
   }
 
@@ -93,9 +101,12 @@ $(document).ready(function() {
   }
 
   // refresh all cards when button is clicked
-  $('#refresh').click(function() {
+  $('#refresh, #playAgain').click(function() {
     reset();
     shuffle();
+  });
+  $('#playAgain').click(function() {
+    $('.congrats').removeClass('active');
   });
 
 
@@ -117,18 +128,24 @@ $(document).ready(function() {
     // check cards to check for matches and reset array
     if (clickedCards.length === 2) {
       if (clickedCards[0] === clickedCards[1]) {
+        $('html').addClass('wait');
         setTimeout(function() {
           $('.game-card.active').addClass('matched');
-        }, 2000);
+          $('html').removeClass('wait');
+          if ($('.game-card.matched').length === $('.game-card').length) {
+            $('.congrats').addClass('active');
+          }
+        }, 1000);
       } else {
+        $('html').addClass('wait');
         setTimeout(function() {
           $('.game-card.active').removeClass('active');
-        }, 2000);
+          $('html').removeClass('wait');
+        }, 1000);
       }
       // set array to empty
       clickedCards.length = 0;
     }
-    console.log(clickedCards);
   });
 
 

@@ -2,8 +2,49 @@
 
 .udacity-game
   +fb(center, center)
-  position: relative
-  .wrapper
+  .body-container
+    .congrats.active
+      pointer-events: auto
+      opacity: 1
+    .congrats
+      position: absolute
+      z-index: 3
+      height: 100%
+      width: 100%
+      top: 0
+      left: 0
+      +fb(center, center)
+      background-color: $dark
+      color: $color2
+      text-align: center
+      font-family: $font2
+      padding: 5rem 10rem
+      border-radius: 10px
+      opacity: 0
+      pointer-events: none
+      transition: 0.25s
+      .heading
+        font-family: $font1
+        text-transform: uppercase
+        letter-spacing: 1px
+      .message
+        font-weight: 300
+      #playAgain
+        background-color: transparent
+        border: 2px solid $color2
+        border-radius: 5px
+        padding: 0.5rem 1rem
+        width: 100%
+        color: $color2
+        margin-top: 1rem
+        font-family: $font1
+        text-transform: uppercase
+        letter-spacing: 1px
+        transition: 0.25s
+        &:hover
+          background-color: $color2
+          color: $light
+  .game
     width: 65rem
     position: relative
     .title
@@ -24,8 +65,16 @@
     .menu
       +fb(center, space-between)
       padding: 2rem 1rem 0
-      .moves
+      position: relative
+      .moves, .timer
         font-size: 1.5rem
+        font-family: $font2
+      .timer
+        position: absolute
+        left: 50%
+        top: 3rem
+        transform: translate(-50%, -50%)
+        font-size: 2.5rem
         font-family: $font2
       // refresh button styling
       #refresh

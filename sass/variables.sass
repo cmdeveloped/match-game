@@ -33,9 +33,12 @@ $font2: 'Comfortaa', sans-serif
   justify-content: $b
 
 // default styling
+html.wait
+  pointer-events: none
 html
   font-size: 1vw
   min-height: 100vh
+  position: relative
   @media #{$hd}
     font-size: 16px
   body
