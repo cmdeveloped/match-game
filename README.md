@@ -9,7 +9,7 @@ If you would like to run the application in your own environment:
 2. `gulp`
 
 ### Description
-This game is my take on a classic matching/memory game. After 15 moves, correct or incorrect, the rating drops to 2 stars. If it takes more than 25 moves, you'll receive a 1 star rating! (womp womp)
+This game is my take on a classic matching/memory game. After 12 moves, correct or incorrect, the rating drops to 2 stars. If it takes more than 18 moves, you'll receive a 1 star rating! (womp womp)
 
 Some pairs are a bit trickier than other due to similarities, so pay close attention.
 
