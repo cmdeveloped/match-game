@@ -203,7 +203,7 @@ $(document).ready(function() {
             // set rating for game
             let finalRating = $('.star:visible').length;
             for (let i = 0; i < finalRating; i++) {
-              $('#totalRating').append(`<i class="fas fa-star"></i>`);
+              $('#totalRating').append(`<img src="./img/star.svg" alt="" />`);
             }
             // final rating for modal
             switch (finalRating) {
@@ -220,14 +220,14 @@ $(document).ready(function() {
             // show the modal
             $('.congrats').addClass('active');
           }
-        }, 1000);
+        }, 500);
         // it's not a match
       } else {
         $('html').addClass('wait');
         setTimeout(function() {
           $('.game-card.active').removeClass('active');
           $('html').removeClass('wait');
-        }, 1000);
+        }, 500);
       }
       // set array to empty
       clickedCards.length = 0;

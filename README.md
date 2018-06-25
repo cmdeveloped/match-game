@@ -5,7 +5,7 @@ Udacity Matching Game built using HTML, Sass, and Javascript ( ES6 &amp; jQuery 
 If you would like to run the application in your own environment:
 `node -v && npm -v`
 
-1. `npm init -y && npm install -g gulp && npm install --save-dev gulp-sass gulp-autoprefixer browser-sync gulp-eslint gulp-concat gulp-uglify gulp-babel babel-core babel-preset-env gulp-rename`
+1. `npm init -y && npm install gulp && npm install --save-dev gulp-sass gulp-autoprefixer browser-sync gulp-eslint gulp-concat gulp-uglify gulp-babel babel-core babel-preset-env gulp-rename`
 2. `gulp`
 
 ### Description
