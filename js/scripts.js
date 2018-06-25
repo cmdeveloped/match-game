@@ -139,7 +139,6 @@ $(document).ready(function() {
     reset();
     shuffle();
     $('.timer').removeClass('active');
-    clearInterval(start);
   });
   // play again button removes modal
   $('#playAgain').click(function() {
