@@ -133,12 +133,31 @@ $(document).ready(function() {
     $('.star').show();
   }
 
+  // declare globals for timer
+  let start = false;
+  let setTimer;
+  // start timing function
+  let startTick = () => {
+    if (start === false) {
+      // set tick function in motion
+      // start start to true once timer has started
+      start = true;
+      setTimer = setInterval(function() {
+        tick();
+      }, 1000);
+    }
+  }
+
   // refresh all cards when button is clicked
   $('#refresh, #playAgain').click(function() {
     $('#totalRating').empty();
+    $('.timer').removeClass('active');
     reset();
     shuffle();
-    $('.timer').removeClass('active');
+
+    // if you press refresh it stops the timer
+    start = false;
+    clearInterval(setTimer);
   });
   // play again button removes modal
   $('#playAgain').click(function() {
@@ -152,15 +171,18 @@ $(document).ready(function() {
   // click card and toggle active
   $(document).on('click', '.game-card:not(.active)', function() {
     // get the name of card
-    let clickedCard = $(this).find('.back').data('match');
     // push the clicked card's name to the array
+    let clickedCard = $(this).find('.back').data('match');
     clickedCards.push(clickedCard);
     // add move
     countMoves();
     // remove any active classes from matched cards
-    $('.game-card.matched').removeClass('active');
     // add class active to clicked card to reveal image
+    $('.game-card.matched').removeClass('active');
     $(this).addClass('active');
+
+    // on game card click, start timer
+    startTick();
     // check cards to check for matches and reset array
     if (clickedCards.length === 2) {
       // it's a match
@@ -172,11 +194,14 @@ $(document).ready(function() {
           $('html').removeClass('wait');
           // if the game has ended conditional
           if ($('.game-card.matched').length === $('.game-card').length) {
-            // empty rating from previous game
-            $('#totalRating').empty();
+            // stop timer when all matches are found
+            clearInterval(setTimer);
+            // empty from previous game
+            $('#totalRating, #totalTime').empty();
+            $('#totalTime').text($('#timer').text());
             // get rating from current game
-            let finalRating = $('.star:visible').length;
             // set rating for game
+            let finalRating = $('.star:visible').length;
             for (let i = 0; i < finalRating; i++) {
               $('#totalRating').append(`<i class="fas fa-star"></i>`);
             }
