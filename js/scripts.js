@@ -91,10 +91,10 @@ $(document).ready(function() {
     }
 
     // check for and hide stars
-    if (moves > 15) {
+    if (moves > 12) {
       $('#stars .star:last-child').hide();
     }
-    if (moves > 25) {
+    if (moves > 18) {
       $('#stars .star:nth-child(2)').hide();
     }
   }
