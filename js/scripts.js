@@ -72,12 +72,29 @@ $(document).ready(function() {
       $('.cards').append(gameCard(card));
     }
 
+    // initial card shuffle animation
     $('.cards').removeClass('load');
     $('.cards').addClass('load');
   }
 
-  // initial shuffle function called
-  shuffle();
+  // timer function here
+  let seconds = 0;
+  let minutes = 0;
+  let tick = () => {
+    seconds++;
+    if (seconds > 9) {
+      if (seconds % 60 === 0) {
+        minutes++;
+        seconds = 0;
+        $('#minutes').text(minutes);
+        $('#seconds').text('0' + seconds);
+      } else {
+        $('#seconds').text(seconds);
+      }
+    } else {
+      $('#seconds').text('0' + seconds);
+    }
+  }
 
   // keep track of moves
   let count = 0;
@@ -90,7 +107,7 @@ $(document).ready(function() {
       $('#moves, #totalMoves').text(moves);
     }
 
-    // check for and hide stars
+    // check for rating and hide stars
     if (moves > 12) {
       $('#stars .star:last-child').hide();
     }
@@ -107,6 +124,12 @@ $(document).ready(function() {
     count = 0;
     moves = 0;
     $('#moves').text(moves);
+    // reset timer
+    seconds = 0;
+    minutes = 0;
+    $('#seconds').text('0' + seconds);
+    $('#minutes').text(minutes);
+    // reset stars
     $('.star').show();
   }
 
@@ -115,7 +138,10 @@ $(document).ready(function() {
     $('#totalRating').empty();
     reset();
     shuffle();
+    $('.timer').removeClass('active');
+    clearInterval(start);
   });
+  // play again button removes modal
   $('#playAgain').click(function() {
     $('.congrats').removeClass('active');
   });
@@ -138,17 +164,24 @@ $(document).ready(function() {
     $(this).addClass('active');
     // check cards to check for matches and reset array
     if (clickedCards.length === 2) {
+      // it's a match
       if (clickedCards[0] === clickedCards[1]) {
+        // class wait stops any interuptions as it checks
         $('html').addClass('wait');
         setTimeout(function() {
           $('.game-card.active').addClass('matched');
           $('html').removeClass('wait');
+          // if the game has ended conditional
           if ($('.game-card.matched').length === $('.game-card').length) {
+            // empty rating from previous game
             $('#totalRating').empty();
+            // get rating from current game
             let finalRating = $('.star:visible').length;
+            // set rating for game
             for (let i = 0; i < finalRating; i++) {
               $('#totalRating').append(`<i class="fas fa-star"></i>`);
             }
+            // final rating for modal
             switch (finalRating) {
               case 1:
                 $('#congratsHeading').text('Womp Womp...');
@@ -160,9 +193,11 @@ $(document).ready(function() {
                 $('#congratsHeading').text('Congratulations!');
                 break;
             }
+            // show the modal
             $('.congrats').addClass('active');
           }
         }, 1000);
+        // it's not a match
       } else {
         $('html').addClass('wait');
         setTimeout(function() {
@@ -175,5 +210,6 @@ $(document).ready(function() {
     }
   });
 
-
+  // initial shuffle function called
+  shuffle();
 });

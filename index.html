@@ -11,18 +11,19 @@
     <!-- styles -->
     <!-- Google Fonts Link Here -->
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300|Open+Sans+Condensed:700" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-oi8o31xSQq8S0RpBcb4FaLB8LJi9AT8oIdmS1QldR8Ui7KUQjNAnDlJjp55Ba8FG" crossorigin="anonymous">
     <link rel="stylesheet" href="./minified/styles.min.css">
 
     <!-- scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="./minified/scripts.min.js"></script>
-    <title></title>
+    <title>Udacity Match Game</title>
   </head>
   <body class="udacity-game">
+    <!-- side title -->
     <h1 class="title">Udacity Match Game</h1>
 
     <main class="body-container">
+      <!-- final game modal -->
       <section class="congrats">
         <div class="wrapper">
           <h2 id="congratsHeading"></h2>
@@ -36,7 +37,7 @@
       <section class="game">
         <!-- top game menu -->
         <div class="menu">
-          <!-- game time -->
+          <!-- moves and ratings -->
           <aside class="counts">
             <div class="moves">
               <label for="moves">Moves - </label>
@@ -45,18 +46,19 @@
             <div class="stars">
               <label for="stars">Rating - </label>
               <span id="stars">
-                <span class="star"><i class="fas fa-star"></i></span>
-                <span class="star"><i class="fas fa-star"></i></span>
-                <span class="star"><i class="fas fa-star"></i></span>
+                <span class="star"><img src="./img/star.svg" alt="rating star"></i></span>
+                <span class="star"><img src="./img/star.svg" alt="rating star"></span>
+                <span class="star"><img src="./img/star.svg" alt="rating star"></span>
               </span>
             </div>
           </aside>
-          <!-- <aside class="timer">
-            <span id="timer">0:00</span>
-          </aside> -->
+          <!-- time set here -->
+          <aside class="timer">
+            <span id="timer"><label id="minutes">0</label>:<label id="seconds">00</label></span>
+          </aside>
           <!-- reset button -->
           <button type="button" name="refresh" id="refresh">
-            <i class="far fa-sync-alt"></i>
+            <img src="./img/sync-alt.svg" alt="Refresh">
           </button>
         </div>
         <!-- append playing cards here -->
