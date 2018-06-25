@@ -2,7 +2,39 @@
 
 .udacity-game
   +fb(center, center)
+  @media #{$xlarge}
+    padding: 0 10vw
+  @media #{$small}
+    padding: 0
+    flex-direction: column
+  .title
+    position: absolute
+    z-index: -1
+    left: 0
+    top: 0
+    white-space: nowrap
+    +fb(center, center)
+    line-height: 1
+    font-size: 5vw
+    font-weight: bold
+    text-transform: uppercase
+    transform: rotate(90deg) translateX(-5vw)
+    transform-origin: bottom left
+    margin: 0
+    color: $dark
+    @media #{$large}
+      font-size: 4rem
+      transform: rotate(90deg) translateX(-4rem)
+    @media #{$small}
+      position: relative
+      white-space: normal
+      text-align: center
+      font-size: 2rem
+      transform: none
   .body-container
+    width: 65rem
+    @media #{$xlarge}
+      width: 100%
     .congrats.active
       pointer-events: auto
       opacity: 1
@@ -18,12 +50,11 @@
       color: $color2
       text-align: center
       font-family: $font2
-      padding: 5rem 10rem
       border-radius: 10px
       opacity: 0
       pointer-events: none
       transition: 0.25s
-      .heading
+      #congratsHeading
         font-family: $font1
         text-transform: uppercase
         letter-spacing: 1px
@@ -45,30 +76,14 @@
           background-color: $color2
           color: $light
   .game
-    width: 60rem
     position: relative
-    .title
-      position: absolute
-      z-index: -1
-      right: -3rem
-      top: 50%
-      height: 0
-      width: 0
-      white-space: nowrap
-      +fb(center, center)
-      transform-origin: center
-      transform: rotate(90deg)
-      font-size: 5vw
-      font-weight: bold
-      text-transform: uppercase
-      color: $dark
     .menu
       +fb(center, space-between)
       padding: 2rem 0.5rem
       position: relative
       color: $color2
       .moves, .timer, .stars
-        font-size: 1.5rem
+        font-size: 1rem
         font-family: $font2
         label
           margin: 0
@@ -105,8 +120,10 @@
         animation: match 0.25s linear forwards !important
       .game-card
         height: 12rem
-        width: 23%
-        padding: 0.5rem
+        width: 24%
+        padding: 0.5vw 0
+        @media #{$medium}
+          height: 8rem
         .inner
           height: 100%
           position: relative
@@ -129,17 +146,17 @@
             height: 100%
           .front
             background-color: $dark
-            i
-              font-size: 4rem
+            img
+              height: 33%
               color: $light
               transition: 0.25s
           .back
             background-color: $color1
             opacity: 0
             transform-origin: center
-            i
-              font-size: 3.5rem
-              color: $light
+            img
+              height: 25%
+              fill: $light
       // card active
       .game-card.active, .game-card.matched
         .front

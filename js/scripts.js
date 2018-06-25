@@ -7,35 +7,35 @@ $(document).ready(function() {
     let icons = [
       {
         slug: 'plane',
-        class: 'fal fa-plane'
+        path: './img/plane.svg'
       },
       {
         slug: 'car',
-        class: 'fal fa-car'
+        path: './img/car.svg'
       },
       {
         slug: 'bike',
-        class: 'fal fa-bicycle'
+        path: './img/bicycle.svg'
       },
       {
         slug: 'jet',
-        class: 'fal fa-fighter-jet'
+        path: './img/fighter-jet.svg'
       },
       {
         slug: 'rocket',
-        class: 'fal fa-rocket'
+        path: './img/rocket.svg'
       },
       {
         slug: 'ship',
-        class: 'fal fa-ship'
+        path: './img/ship.svg'
       },
       {
         slug: 'taxi',
-        class: 'fal fa-taxi'
+        path: './img/taxi.svg'
       },
       {
         slug: 'train',
-        class: 'fal fa-train'
+        path: './img/train.svg'
       }
     ];
     // create empty array for duplicating icons
@@ -55,10 +55,10 @@ $(document).ready(function() {
       <div class="game-card">
         <div class="inner">
           <div class="front">
-            <i class="fal fa-question"></i>
+            <img src="./img/question.svg" alt="" />
           </div>
           <div class="back" data-match="${icons.slug}">
-            <i class="${icons.class}"></i>
+            <img src="${icons.path}" alt="" />
           </div>
         </div>
       </div>
@@ -112,6 +112,7 @@ $(document).ready(function() {
 
   // refresh all cards when button is clicked
   $('#refresh, #playAgain').click(function() {
+    $('#totalRating').empty();
     reset();
     shuffle();
   });
@@ -124,7 +125,7 @@ $(document).ready(function() {
   const clickedCards = [];
 
   // click card and toggle active
-  $(document).on('click', '.game-card', function() {
+  $(document).on('click', '.game-card:not(.active)', function() {
     // get the name of card
     let clickedCard = $(this).find('.back').data('match');
     // push the clicked card's name to the array
@@ -143,9 +144,21 @@ $(document).ready(function() {
           $('.game-card.active').addClass('matched');
           $('html').removeClass('wait');
           if ($('.game-card.matched').length === $('.game-card').length) {
+            $('#totalRating').empty();
             let finalRating = $('.star:visible').length;
             for (let i = 0; i < finalRating; i++) {
               $('#totalRating').append(`<i class="fas fa-star"></i>`);
+            }
+            switch (finalRating) {
+              case 1:
+                $('#congratsHeading').text('Womp Womp...');
+                break;
+              case 2:
+                $('#congratsHeading').text('Not Bad!');
+                break;
+              case 3:
+                $('#congratsHeading').text('Congratulations!');
+                break;
             }
             $('.congrats').addClass('active');
           }
